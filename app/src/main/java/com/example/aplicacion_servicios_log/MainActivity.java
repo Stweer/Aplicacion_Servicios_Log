@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     p.setImagen(foto);
                     p.setPais(pais);
                     p.setTelefono(telefono);
-                    databaseReference.child("Servicio").child(p.getServicio_id()).setValue(p);
+                    databaseReference.child("Servicio").child(p.getCategoriaID()).setValue(p);
                     Toast.makeText(this, "Registro Actualizado", Toast.LENGTH_LONG).show();
                     limpiarCajas();
                 }
@@ -214,8 +214,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.icon_delete:{
 
                 Servicio p = new Servicio();
-                p.setCategoriaID(servicioSelected.getServicio_id());
-                databaseReference.child("Servicio").child(p.getServicio_id()).removeValue();
+                p.setCategoriaID(servicioSelected.getCategoriaID());
+                databaseReference.child("Servicio").child(p.getCategoriaID()).removeValue();
                 Toast.makeText(this,"Registro Eliminado", Toast.LENGTH_LONG).show();
                 limpiarCajas();
                 break;
