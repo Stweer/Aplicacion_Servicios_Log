@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else {
                     Servicio p = new Servicio();
-                    p.setServicio_id(UUID.randomUUID().toString());
+                    p.setCategoriaID(UUID.randomUUID().toString());
                     p.setNombre(servicio_nombre);
                     p.setDescripcion(servicio_descripcion);
                     p.setPrecio(servicio_precio);
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     p.setImagen(foto);
                     p.setPais(pais);
                     p.setTelefono(telefono);
-                    databaseReference.child("Servicio").child(p.getServicio_id()).setValue(p);
+                    databaseReference.child("Servicio").child(p.getCategoriaID()).setValue(p);
                     Toast.makeText(this, "Registro Agregado", Toast.LENGTH_LONG).show();
                     limpiarCajas();
                 }
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else {
                     Servicio p = new Servicio();
-                    p.setServicio_id(UUID.randomUUID().toString());
+                    p.setCategoriaID(UUID.randomUUID().toString());
                     p.setNombre(servicio_nombre);
                     p.setDescripcion(servicio_descripcion);
                     p.setPrecio(servicio_precio);
@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.icon_delete:{
 
                 Servicio p = new Servicio();
-                p.setServicio_id(servicioSelected.getServicio_id());
+                p.setCategoriaID(servicioSelected.getServicio_id());
                 databaseReference.child("Servicio").child(p.getServicio_id()).removeValue();
                 Toast.makeText(this,"Registro Eliminado", Toast.LENGTH_LONG).show();
                 limpiarCajas();
