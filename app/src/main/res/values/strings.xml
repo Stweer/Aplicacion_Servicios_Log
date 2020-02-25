@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Aplicacion_Servicios_Log</string>
+    <string name="app_name">EASY SERVICES</string>
+    <string name="drawer_open">holadrawer</string>
+    <string name="drawer_close">close</string>
+
+    <string name="login_name">   Ingresar</string>
+    <string name="txtuser">Nombre de Usuario</string>
+    <string name="txtpassword"> Contraseña: ******** </string>
+    <string name="registrese"><b>Registrese</b></string>
+    <string name="ingreso_cliente">Ingresar como Cliente</string>
+    <string name="registrarse">Registrarse como Profesional</string>
+    <string name="subtitulo">Registro como Profesional</string>
+    <string name="porfavor_co">Porfavor, complete los campos inferiores</string>
 </resources>
+

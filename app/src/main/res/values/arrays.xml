@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ubicacion">
+        <item>Seleccione su Ubicacion</item>
+        <item>Selecionar sitio en mapa</item>
+    </string-array>
+    <string-array name="sexo">
+        <item>Femenino</item>
+        <item>Masculino</item>
+    </string-array>
+    <string-array name="estado">
+        <item>Escoge tu estado</item>
+        <item>Activo</item>
+        <item>Inactivo</item>
+    </string-array>
+    <string-array name="categoria">
+        <item>Escoge una categoria</item>
+        <item>Profesional</item>
+        <item>Oficio</item>
+    </string-array>
+
+</resources>

@@ -1,18 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/fondo9"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@color/color4"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--
+        <ImageView
+            android:layout_width="89dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="145dp"
+            android:layout_marginTop="10dp"
+            android:maxWidth="150dp"
+            android:maxHeight="150dp"
+            android:src="@drawable/logo_s_f"></ImageView>
+-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/t_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_marginTop="3dp"
+            android:gravity="center"
+            android:text="CREAR SERVICIO"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/t_imagen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Imagen:"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:layout_marginTop="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:id="@+id/imagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_imagen"
+            android:hint="Foto" >
+            <requestFocus/>
+        </EditText>
+        <TextView
+            android:id="@+id/t_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Titulo del servicio:"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:layout_marginTop="1dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_nombre"
+            android:hint="Nombre del servicio" >
+            <requestFocus/>
+        </EditText>
+
+        <TextView
+            android:id="@+id/t_descripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nombre"
+            android:text="Descripcion del servicio:"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:id="@+id/descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_descripcion"
+            android:hint="Descripcion del servicio" >
+            <requestFocus/>
+        </EditText>
+        <TextView
+            android:id="@+id/t_precio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descripcion"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:text="Precio del servicio:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:id="@+id/precio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_precio"
+            android:hint="Precio" >
+            <requestFocus/>
+        </EditText>
+        <TextView
+            android:id="@+id/t_pais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/precio"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:text="Pais:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:id="@+id/pais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_pais"
+            android:hint="Escriba el pais" >
+            <requestFocus/>
+        </EditText>
+
+        <TextView
+            android:id="@+id/t_latidud_longitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnubicacion"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:text="Latitud y Longitud:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/btnubicacion"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_below="@id/t_latidud_longitud"
+            android:background="@drawable/fondo5"
+            android:onClick="IrAlMapa"
+            android:text="Seleccionar Ubicación"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lat_long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/t_latidud_longitud"
+            android:layout_toRightOf="@id/t_latidud_longitud"
+            android:layout_below="@id/t_latidud_longitud"
+            android:textSize="18sp"
+            android:text="aqui lat y long"
+            android:textColor="@color/primary_text" />
+
+<!--        <TextView
+            android:id="@+id/t_categoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnubicacion"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:text="Categoria:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <Spinner
+            android:id="@+id/categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/categoria"
+            android:layout_below="@id/t_categoria"/>-->
+
+        <TextView
+            android:id="@+id/t_estado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lat_long"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:text="Estado:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <Spinner
+            android:id="@+id/estado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/estado"
+            android:layout_below="@id/t_estado"/>
+
+        <TextView
+            android:id="@+id/t_telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/precio"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:text="Telefono:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:id="@+id/telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_pais"
+            android:inputType="number"
+            android:hint="Escriba su numero" >
+            <requestFocus/>
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:text="Lista de tus Servicios"
+            android:textColor="@color/Negro"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listV_servicios"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp" />
+
+    </LinearLayout>
+</ScrollView>
+
