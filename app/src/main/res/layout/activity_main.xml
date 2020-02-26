@@ -94,6 +94,23 @@
             <requestFocus/>
         </EditText>
         <TextView
+            android:id="@+id/t_descuento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descripcion"
+            android:text="Descuento del servicio:"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:id="@+id/descuento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_descuento"
+            android:hint="Descuento del servicio" >
+            <requestFocus/>
+        </EditText>
+        <TextView
             android:id="@+id/t_precio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -149,14 +166,24 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/lat_long"
+            android:id="@+id/cordX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/t_latidud_longitud"
             android:layout_toRightOf="@id/t_latidud_longitud"
             android:layout_below="@id/t_latidud_longitud"
             android:textSize="18sp"
-            android:text="aqui lat y long"
+            android:text="aqui lat"
+            android:textColor="@color/primary_text" />
+        <TextView
+            android:id="@+id/cordY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/cordX"
+            android:layout_toRightOf="@id/cordX"
+            android:layout_below="@id/btnubicacion"
+            android:textSize="18sp"
+            android:text="aqui long"
             android:textColor="@color/primary_text" />
 
 <!--        <TextView
@@ -179,7 +206,7 @@
             android:id="@+id/t_estado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/lat_long"
+            android:layout_below="@id/cordY"
             android:textColor="@color/primary_text"
             android:textStyle="bold"
             android:text="Estado:"

@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private List<Servicio> listServicio = new ArrayList<Servicio>();
     ArrayAdapter<Servicio> arrayAdapterServicio;
 
-    EditText serv_nomb, serv_descrip,serv_prec,serv_foto,serv_pais,serv_telefono;
+    EditText serv_nomb, serv_descrip,serv_prec,serv_foto,serv_pais,serv_telefono, serv_des;
     ListView listV_servicios;
-    TextView lat_long;
+    TextView cordX, cordY;
     Spinner serv_cat, serv_estado;
 
     FirebaseDatabase firebaseDatabase;
@@ -78,10 +78,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         serv_descrip = findViewById(R.id.descripcion);
         serv_prec = findViewById(R.id.precio);
         serv_estado = (Spinner) findViewById(R.id.estado);
-        lat_long=(TextView) findViewById(R.id.lat_long);
+        //=(TextView) findViewById(R.id.lat_long);
         serv_foto = findViewById(R.id.imagen);
         serv_pais = findViewById(R.id.pais);
         serv_telefono = findViewById(R.id.telefono);
+        serv_des = findViewById(R.id.descuento);
+
+        cordX = findViewById(R.id.cordX);
+        cordY = findViewById(R.id.cordY);
 
         listV_servicios = findViewById(R.id.listV_servicios);
 
@@ -98,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 serv_foto.setText(servicioSelected.getImagen());
                 serv_pais.setText(servicioSelected.getPais());
                 serv_telefono.setText(servicioSelected.getTelefono());
+                serv_des.setText(servicioSelected.getDiscount());
 
             }
 
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void listarDatos() {
-        databaseReference.child("Servicio").addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listServicio.clear();
@@ -129,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        //firebaseDatabase.setPersistenceEnabled(true);// agrega de manera local sin internet
         databaseReference = firebaseDatabase.getReference("Servicio");
     }
 
@@ -151,7 +155,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String pais = serv_pais.getText().toString();
         String telefono = serv_telefono.getText().toString();
 
-
+        String discount = serv_des.getText().toString();
+        String coordenadaX = cordX.getText().toString();
+        String coordenadaY = cordY.getText().toString();
 
         switch (item.getItemId()){
             case R.id.icon_add:{
@@ -161,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     datolatitud = datos.getDouble("latitud");
                     datolongitud = datos.getDouble("longitud");
                     Log.e("verdatos","latitud:"+datolatitud.toString()+"longitud"+datolongitud.toString());
-                    lat_long.setText("latitud:"+datolatitud.toString()+"\n"+"longitud"+datolongitud.toString());
+                    //lat_long.setText("latitud:"+datolatitud.toString()+"\n"+"longitud"+datolongitud.toString());
 
                 }else {
                     Log.e("verdatos1","NO HAY DATOS");
@@ -182,7 +188,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     p.setImagen(foto);
                     p.setPais(pais);
                     p.setTelefono(telefono);
-                    databaseReference.child("Servicio").child(p.getCategoriaID()).setValue(p);
+                    p.setDiscount(discount);
+                    p.setCoordenadaX(datolatitud);
+                    p.setCoordenadaY(datolongitud);
+                    //p.setCoordenadaX(Double.valueOf(String.valueOf(cordX)));
+                    //p.setCoordenadaY(Double.valueOf(String.valueOf(cordY)));
+                    databaseReference.child(p.getCategoriaID()).setValue(p);
                     Toast.makeText(this, "Registro Agregado", Toast.LENGTH_LONG).show();
                     limpiarCajas();
                 }
@@ -204,7 +215,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     p.setImagen(foto);
                     p.setPais(pais);
                     p.setTelefono(telefono);
-                    databaseReference.child("Servicio").child(p.getCategoriaID()).setValue(p);
+                    p.setDiscount(discount);
+                    p.setCoordenadaX(datolatitud);
+                    p.setCoordenadaY(datolongitud);
+                    //p.setCoordenadaX(Double.valueOf(String.valueOf(cordX)));
+                    //p.setCoordenadaY(Double.valueOf(String.valueOf(cordY)));
+                    databaseReference.child(p.getCategoriaID()).setValue(p);
                     Toast.makeText(this, "Registro Actualizado", Toast.LENGTH_LONG).show();
                     limpiarCajas();
                 }
@@ -215,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 Servicio p = new Servicio();
                 p.setCategoriaID(servicioSelected.getCategoriaID());
-                databaseReference.child("Servicio").child(p.getCategoriaID()).removeValue();
+                databaseReference.child(p.getCategoriaID()).removeValue();
                 Toast.makeText(this,"Registro Eliminado", Toast.LENGTH_LONG).show();
                 limpiarCajas();
                 break;
@@ -237,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         serv_foto.setText("");
         serv_pais.setText("");
         serv_telefono.setText("");
+        serv_des.setText("");
     }
 
     private void validacion() {
@@ -248,6 +265,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String foto = serv_foto.getText().toString();
         String pais = serv_pais.getText().toString();
         String telefono = serv_telefono.getText().toString();
+        String discount = serv_des.getText().toString();
 
         if (servicio_nombre.equals("")){
             serv_nomb.setError("Este campo es requerido");
