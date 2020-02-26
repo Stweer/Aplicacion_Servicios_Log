@@ -173,7 +173,7 @@
             android:layout_toRightOf="@id/t_latidud_longitud"
             android:layout_below="@id/t_latidud_longitud"
             android:textSize="18sp"
-            android:text="aqui lat"
+            android:text="CoordenadaX:"
             android:textColor="@color/primary_text" />
         <TextView
             android:id="@+id/cordY"
@@ -183,7 +183,7 @@
             android:layout_toRightOf="@id/cordX"
             android:layout_below="@id/btnubicacion"
             android:textSize="18sp"
-            android:text="aqui long"
+            android:text="CoordenadaY:"
             android:textColor="@color/primary_text" />
 
 <!--        <TextView

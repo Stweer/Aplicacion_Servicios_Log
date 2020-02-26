@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         serv_telefono = findViewById(R.id.telefono);
         serv_des = findViewById(R.id.descuento);
 
-        cordX = findViewById(R.id.cordX);
-        cordY = findViewById(R.id.cordY);
+        cordX = (TextView)findViewById(R.id.cordX);
+        cordY = (TextView) findViewById(R.id.cordY);
 
         listV_servicios = findViewById(R.id.listV_servicios);
 
